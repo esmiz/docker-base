@@ -1,0 +1,13 @@
+version: '2'
+services:
+    docker_main:
+        container_name: ${DOCKER_MAIN_NAME}
+        build: docker-main
+        environment:
+            - TZ=Europe/Madrid
+        ports:
+          - "${APP_PORT}:80"
+        volumes:
+            - ${APP_FOLDER}:/var/www/project
+            - ${DATA_FOLDER}uploads:/var/www/project/public/uploads
+        restart: ${RESTART}
